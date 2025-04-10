@@ -9,43 +9,48 @@ use PHPUnit\Framework\TestCase;
 
 class EnumToArrayTest extends TestCase
 {
-    public function testNamesMethod()
+    public function test_names_method()
     {
         self::assertEquals([
+            'DRAFT',
             'ACTIVE',
             'CANCELED',
         ], Status::names());
     }
 
-    public function testValuesMethod()
+    public function test_values_method()
     {
         self::assertEquals([
+            'draft',
             'active',
             'canceled',
         ], Status::values());
     }
 
-    public function testArrayMethod()
+    public function test_array_method()
     {
         self::assertEquals([
+            'draft' => 'DRAFT',
             'active' => 'ACTIVE',
             'canceled' => 'CANCELED',
         ], Status::array());
     }
 
-    public function testToArrayByKeyMethodWithExistingKeys()
+    public function test_to_array_by_key_method_with_existing_keys()
     {
         self::assertEquals([
-            'active' => 'green',
-            'canceled' => 'red',
+            'draft' => 'warning',
+            'active' => 'success',
+            'canceled' => 'error',
         ], Status::array('color'));
     }
 
-    public function testToArrayByKeyMethodWithoutExistingKeys()
+    public function test_to_array_by_key_method_without_existing_keys()
     {
         self::assertEquals([
-            'green',
-            'red',
+            'warning',
+            'success',
+            'error',
         ], Status::toArrayByKey('color'));
     }
 }

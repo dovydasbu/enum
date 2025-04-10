@@ -12,14 +12,16 @@ enum Status: string
     use EnumFromKey;
     use EnumToArray;
 
+    case DRAFT = 'draft';
     case ACTIVE = 'active';
     case CANCELED = 'canceled';
 
     public function color(): string
     {
         return match ($this) {
-            self::ACTIVE => 'green',
-            self::CANCELED => 'red',
+            self::DRAFT => 'warning',
+            self::ACTIVE => 'success',
+            self::CANCELED => 'error',
         };
     }
 }

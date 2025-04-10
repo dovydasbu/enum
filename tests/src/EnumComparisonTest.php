@@ -9,14 +9,16 @@ use PHPUnit\Framework\TestCase;
 
 class EnumComparisonTest extends TestCase
 {
-    public function testTraitComparesItselfCorrectly()
+    public function test_trait_compares_itself_correctly()
     {
+        self::assertTrue(Status::DRAFT->is(Status::DRAFT));
         self::assertTrue(Status::ACTIVE->is(Status::ACTIVE));
         self::assertTrue(Status::CANCELED->is(Status::CANCELED));
     }
 
-    public function testTraitComparesItselfIncorrectly()
+    public function test_trait_compares_itself_incorrectly()
     {
+        self::assertFalse(Status::DRAFT->is(Status::ACTIVE));
         self::assertFalse(Status::ACTIVE->is(Status::CANCELED));
         self::assertFalse(Status::CANCELED->is(Status::ACTIVE));
     }

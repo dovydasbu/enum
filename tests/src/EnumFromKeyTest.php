@@ -9,15 +9,17 @@ use PHPUnit\Framework\TestCase;
 
 class EnumFromKeyTest extends TestCase
 {
-    public function testFromKeyTraitReturnsCorrectEnumInstance()
+    public function test_from_key_trait_returns_correct_enum_instance()
     {
-        self::assertEquals(Status::ACTIVE, Status::fromKey('color', 'green'));
-        self::assertEquals(Status::CANCELED, Status::fromKey('color', 'red'));
+        self::assertEquals(Status::DRAFT, Status::fromKey('color', 'warning'));
+        self::assertEquals(Status::ACTIVE, Status::fromKey('color', 'success'));
+        self::assertEquals(Status::CANCELED, Status::fromKey('color', 'error'));
     }
 
-    public function testFromKeyTraitReturnsIncorrectEnumInstance()
+    public function test_from_key_trait_returns_incorrect_enum_instance()
     {
-        self::assertNotEquals(Status::ACTIVE, Status::fromKey('color', 'red'));
-        self::assertNotEquals(Status::CANCELED, Status::fromKey('color', 'green'));
+        self::assertNotEquals(Status::DRAFT, Status::fromKey('color', 'success'));
+        self::assertNotEquals(Status::ACTIVE, Status::fromKey('color', 'error'));
+        self::assertNotEquals(Status::CANCELED, Status::fromKey('color', 'success'));
     }
 }
