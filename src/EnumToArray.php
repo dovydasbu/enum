@@ -37,20 +37,4 @@ trait EnumToArray
 
         return $values ?? [];
     }
-
-    public static function toSelectArray(?string $titleKey = null): array
-    {
-        $values = [];
-
-        foreach (self::cases() as $case) {
-            $values[] = [
-                'id' => $case->value,
-                'label' => $titleKey ? $case->$titleKey() : $case->name,
-                'is_priority' => false,
-                'icon' => method_exists($case, 'icon') ? $case->icon() : null,
-            ];
-        }
-
-        return $values;
-    }
 }
