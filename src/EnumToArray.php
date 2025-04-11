@@ -16,23 +16,27 @@ trait EnumToArray
         return array_column(self::cases(), 'value');
     }
 
-    public static function array(?string $valueKey = null): array
+    public static function toArray(?string $valueMethod = null): array
     {
-        if (! $valueKey) {
+        if (! $valueMethod) {
             return array_combine(self::values(), self::names());
         }
 
         foreach (self::cases() as $case) {
-            $values[] = $case->$valueKey();
+            $values[] = $case->$valueMethod();
         }
 
         return array_combine(self::values(), $values ?? []);
     }
 
-    public static function toArrayByKey(string $key): array
+    public static function toArrayWithoutKey(?string $valueMethod = null): array
     {
+        if (! $valueMethod) {
+            return self::values();
+        }
+
         foreach (self::cases() as $case) {
-            $values[] = $case->$key();
+            $values[] = $case->$valueMethod();
         }
 
         return $values ?? [];
