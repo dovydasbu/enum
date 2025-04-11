@@ -11,7 +11,9 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Dovydasbu\\Enum\\": "src/"
+            "Dovydasbu\\Enum\\": "src/",
+            "Dovydasbu\\Tests\\": "tests/src",
+            "Dovydasbu\\Tests\\Data\\": "tests/data"
         }
     },
     "authors": [
