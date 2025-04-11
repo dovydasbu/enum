@@ -10,7 +10,6 @@ This repository contains a set of reusable PHP traits that extend the functional
 
 ### EnumComparison
 
-- **File:** `EnumComparison.php`
 - **Purpose:** Provides a simple method to compare two enum cases.
 - **Method:**
     - `is(self $enum): bool`  
@@ -18,7 +17,6 @@ This repository contains a set of reusable PHP traits that extend the functional
 
 ### EnumFromKey
 
-- **File:** `EnumFromKey.php`
 - **Purpose:** Enables creating an enum instance from a given key and value.
 - **Method:**
     - `fromKey(string $key, mixed $value): ?self`  
@@ -27,7 +25,6 @@ This repository contains a set of reusable PHP traits that extend the functional
 
 ### EnumToArray
 
-- **File:** `EnumToArray.php`
 - **Purpose:** Provides various methods to convert enum cases to array formats.
 - **Methods:**
     - `names(): array`  
