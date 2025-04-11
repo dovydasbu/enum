@@ -6,12 +6,12 @@ namespace Dovydasbu\Enum;
 
 use RuntimeException;
 
-trait EnumFromKey
+trait EnumFromMethod
 {
-    public static function fromKey(string $key, mixed $value): ?self
+    public static function fromMethod(string $method, mixed $value): ?self
     {
         foreach (self::cases() as $case) {
-            $caseValue = $case->$key();
+            $caseValue = $case->$method();
 
             if ($caseValue === $value) {
                 return $case;
@@ -21,7 +21,7 @@ trait EnumFromKey
         throw new RuntimeException(sprintf(
             'Value [%s] not found for key [%s] for enum class [%s]',
             $value,
-            $key,
+            $method,
             self::class
         ));
     }
