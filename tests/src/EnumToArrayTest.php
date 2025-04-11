@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dovydasbu\tests\src;
 
+use Dovydasbu\Tests\Data\EmptyTestEnum;
 use Dovydasbu\Tests\Data\TestEnum;
 use PHPUnit\Framework\TestCase;
 
@@ -27,30 +28,49 @@ class EnumToArrayTest extends TestCase
         ], TestEnum::values());
     }
 
-    public function test_array_method()
+    public function test_to_array_method()
     {
         self::assertEquals([
             'first-value' => 'FIRST_KEY',
             'second-value' => 'SECOND_KEY',
             'third-value' => 'THIRD_KEY',
-        ], TestEnum::array());
+        ], TestEnum::toArray());
     }
 
-    public function test_to_array_by_key_method_with_existing_keys()
+    public function test_to_array_method_with_value_method()
     {
         self::assertEquals([
             'first-value' => 'warning',
             'second-value' => 'success',
             'third-value' => 'error',
-        ], TestEnum::array('color'));
+        ], TestEnum::toArray('color'));
     }
 
-    public function test_to_array_by_key_method_without_existing_keys()
+    public function test_to_array_method_with_value_method_with_empty_enum()
+    {
+        self::assertEquals([], EmptyTestEnum::toArray('color'));
+    }
+
+    public function test_to_array_without_key_method_without_existing_keys()
     {
         self::assertEquals([
             'warning',
             'success',
             'error',
-        ], TestEnum::toArrayByKey('color'));
+        ], TestEnum::toArrayWithoutKey('color'));
+    }
+
+    public function test_to_array_without_key_method_without_value_method()
+    {
+        self::assertEquals([
+            'first-value',
+            'second-value',
+            'third-value',
+        ], TestEnum::toArrayWithoutKey());
+    }
+
+    public function test_to_array_without_key_method_without_empty_enum()
+    {
+        self::assertEquals([], EmptyTestEnum::toArrayWithoutKey('no-values'));
     }
 }
