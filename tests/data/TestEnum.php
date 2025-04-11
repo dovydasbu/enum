@@ -3,13 +3,13 @@
 namespace Dovydasbu\Tests\Data;
 
 use Dovydasbu\Enum\EnumComparison;
-use Dovydasbu\Enum\EnumFromKey;
+use Dovydasbu\Enum\EnumFromMethod;
 use Dovydasbu\Enum\EnumToArray;
 
 enum TestEnum: string
 {
     use EnumComparison;
-    use EnumFromKey;
+    use EnumFromMethod;
     use EnumToArray;
 
     case FIRST_KEY = 'first-value';
